@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>FraudWatch Dashboard</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🛡 FraudWatch Dashboard</h1>
+
+<div class="cards">
+<div class="card blue">
+<h2 th:text="${total}">0</h2>
+<p>Total Transactions</p>
+</div>
+
+<div class="card red">
+<h2 th:text="${flagged}">0</h2>
+<p>Flagged</p>
+</div>
+
+<div class="card green">
+<h2 th:text="${normal}">0</h2>
+<p>Normal</p>
+</div>
+</div>
+
+<div class="form-box">
+
+<h2>Add Transaction</h2>
+
+<form action="/add" method="post">
+
+<input type="text" name="sender" placeholder="Sender" required>
+
+<input type="text" name="receiver" placeholder="Receiver" required>
+
+<input type="number" name="amount" placeholder="Amount" required>
+
+<button>Add Transaction</button>
+
+</form>
+
+</div>
+
+<div class="table-box">
+
+<h2>Transaction History</h2>
+
+<table>
+
+<tr>
+<th>Sender</th>
+<th>Receiver</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+<tr th:each="t:${list}">
+
+<td th:text="${t.sender}"></td>
+<td th:text="${t.receiver}"></td>
+<td th:text="${t.amount}"></td>
+
+<td th:text="${t.status}"
+th:classappend="${t.status=='FLAGGED'}?'flagged':''"></td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

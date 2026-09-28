@@ -1,0 +1,1 @@
+package com.fraudwatch; import org.springframework.boot.*; import org.springframework.boot.autoconfigure.*; @SpringBootApplication public class FraudWatchApplication{ public static void main(String[]a){SpringApplication.run(FraudWatchApplication.class,a);} }
